@@ -1,12 +1,15 @@
 package com.myretail.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 
 public class Product {
 
+    @Id
+    public int id;
+
     private Item item;
     public Price price;
-    public int id;
+
 
     public Item getItem(){
         return item;
