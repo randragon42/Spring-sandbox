@@ -15,35 +15,19 @@ import java.util.Optional;
 public class ProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private MongoService mongoService;
+
+    @Autowired
+    private RedSkyService redSkyService;
 
     public Product getProduct(int id) {
-        RestTemplate restTemplate = new RestTemplate();
-        // TODO: move into fancy string concatenation
-        String excludes = "?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics,deep_red_labels,available_to_promise_network";
-        String resourceUrl = "https://redsky.target.com/v2/pdp/tcin/" + id + excludes;
-
-        ResponseEntity<Response> response = restTemplate.getForEntity(resourceUrl, Response.class);
-
-        Product product = response.getBody().product;
-        product.id = id;
+        Product product = redSkyService.getProduct(id);
         // TODO: handle situation where product is not found
-
         // Get Product price from NoSQL data store
-        //product.price = getPriceFromDataStore(id);
-        Optional<Product> dbProduct = productRepository.findById(id);
-        if(dbProduct.isPresent()){
-            product.price = dbProduct.get().price;
-        }
-        else {
-            product.price = new Price(5000, "USD");
-        }
+        product.price = mongoService.getProductPrice(product);
 
         return product;
     }
-
-
-
 
     public void setProductPrice(int id, double price) {
 

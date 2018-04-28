@@ -22,10 +22,12 @@ public class MyRetailRestfulServiceApplication {
     @Bean
     CommandLineRunner preLoadMongo() throws Exception {
         return args -> {
-            Product product = new Product();
-            product.id = 16696652;
-            product.price = new Price(250, "USD");
-            productRepository.save(product);
+            if(productRepository.findAll().size() == 0){
+                Product product = new Product();
+                product.id = 16696652;
+                product.price = new Price(250, "USD");
+                productRepository.save(product);
+            }
         };
     }
 }
