@@ -1,5 +1,6 @@
 package com.myretail.services;
 
+import com.mongodb.WriteResult;
 import com.myretail.data.ProductRepository;
 import com.myretail.models.Price;
 import com.myretail.models.Product;
@@ -28,6 +29,10 @@ public class MongoService {
         }
 
         return price;
+    }
+
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
     }
 
     private int getRandomPrice() {

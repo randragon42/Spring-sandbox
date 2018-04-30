@@ -2,12 +2,14 @@ package com.myretail.controllers;
 
 import com.myretail.exceptions.ResourceNotFoundException;
 import com.myretail.models.Product;
+import com.myretail.models.Response;
 import com.myretail.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/products")
@@ -25,6 +27,17 @@ public class ProductController {
         }
 
         return product;
+    }
+
+    // TODO: differentiate between 201 and 204
+    @PutMapping("/{id}")
+    public ResponseEntity<?> putProduct(@RequestBody Product product) {
+        Product result = productService.saveProduct(product);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(result.id).toUri();
+
+        return ResponseEntity.created(location).build();
     }
 
 }

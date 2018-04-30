@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "9d8b4708-a393-4f3c-99b6-1ce1e28bcc83",
+		"name": "My Retail Restful Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Valid Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "Request a valid product ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invalid Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/products/15117729",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"15117729"
+					]
+				},
+				"description": "Request invalid product ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Valid Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"product\":{\"id\":13860428,\"item\":{\"product_description\":{\"title\":\"The Big Lebowski (Blu-ray)\"}},\"price\":{\"value\":42.0,\"currencyCode\":\"USD\"}}}"
+				},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "Update price"
+			},
+			"response": []
+		}
+	]
+}

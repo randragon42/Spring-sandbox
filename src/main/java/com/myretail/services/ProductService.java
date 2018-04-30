@@ -25,7 +25,7 @@ public class ProductService {
         return product;
     }
 
-    public void setProductPrice(int id, double price) {
-
+    public Product saveProduct(Product product) {
+        return mongoService.saveProduct(product);
     }
 }
