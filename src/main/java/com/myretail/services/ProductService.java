@@ -13,13 +13,18 @@ public class ProductService {
     @Autowired
     private RedSkyService redSkyService;
 
+    /**
+     * Call the Red Sky service to get product information
+     * @param id the id of product to query for
+     * @return a product if it exists in Red Sky, else null
+     */
     public Product getProduct(String id) {
         Product product = redSkyService.getProduct(id);
         if(product == null) {
             return null;
         }
 
-        // Get Product price from NoSQL data store
+        // Get Product price from Mongo data store
         product.price = mongoService.getProductPrice(product);
 
         return product;

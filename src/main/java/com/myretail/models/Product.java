@@ -2,8 +2,6 @@ package com.myretail.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.math.BigInteger;
-
 public class Product {
 
 //    @Id

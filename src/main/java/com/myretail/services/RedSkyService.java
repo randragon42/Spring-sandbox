@@ -4,7 +4,6 @@ import com.myretail.models.Product;
 import com.myretail.models.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -39,7 +38,6 @@ public class RedSkyService {
             product = response.getBody().product;
             product.id = id;
         } catch (HttpClientErrorException e) {
-            // TODO: what is the correct behavior if a product is not found?
             Logger log = LoggerFactory.getLogger(this.getClass());
             log.error(e.toString());
         }
