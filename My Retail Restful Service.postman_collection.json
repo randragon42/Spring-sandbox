@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9d8b4708-a393-4f3c-99b6-1ce1e28bcc83",
+		"_postman_id": "d3156b22-9c2d-4546-9971-a4e2fcb8ea04",
 		"name": "My Retail Restful Service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,7 +10,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost:8080/products/13860428",
 					"host": [
@@ -31,7 +34,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost:8080/products/15117729",
 					"host": [
@@ -59,7 +65,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"product\":{\"id\":13860428,\"item\":{\"product_description\":{\"title\":\"The Big Lebowski (Blu-ray)\"}},\"price\":{\"value\":42.0,\"currencyCode\":\"USD\"}}}"
+					"raw": "{\"id\":\"13860428\",\"item\":{\"product_description\":{\"title\":\"The Big Lebowski (Blu-ray)\"}},\"price\":{\"value\":42.12,\"currencyCode\":\"USD\"}}"
 				},
 				"url": {
 					"raw": "localhost:8080/products/13860428",
