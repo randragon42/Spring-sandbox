@@ -31,11 +31,15 @@ public class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
+    /**
+     * getProduct() should return the correct product when RedSky and Mongo
+     * return valid product and price
+     */
     @Test
     public void getProductTest_RedSkyServiceAndMongoServiceReturnValidProduct() {
         Product product = new Product();
         product.id = 42;
-        product.setItem(new Item(new ProductDescription("Towel")));
+        //product.setItem(new Item(new ProductDescription("Towel")));
         Price price = new Price(42, "USD");
 
         Mockito.when(redSkyService.getProduct(product.id)).thenReturn(product);
@@ -46,6 +50,10 @@ public class ProductServiceTest {
         Assert.assertEquals(product, actualProduct);
     }
 
+    /**
+     * getProduct() should return null when RedSky is unable to find the product
+     * based on the ID passed in
+     */
     @Test
     public void getProductTest_RedSkyServiceReturnsNullProduct() {
         Product product = null;

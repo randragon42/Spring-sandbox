@@ -4,10 +4,6 @@ public class Item {
 
     private ProductDescription product_description;
 
-    public Item(ProductDescription product_description) {
-        this.product_description = product_description;
-    }
-
     public ProductDescription getProduct_description() {
         return product_description;
     }

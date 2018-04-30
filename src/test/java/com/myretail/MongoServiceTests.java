@@ -1,11 +1,9 @@
 package com.myretail;
 
-import com.mongodb.Mongo;
 import com.myretail.data.ProductRepository;
 import com.myretail.models.Price;
 import com.myretail.models.Product;
 import com.myretail.services.MongoService;
-import com.myretail.services.ProductService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +25,10 @@ public class MongoServiceTests {
     @MockBean
     ProductRepository productRepository;
 
+    /**
+     * getProductPrice() should return the price for a product that already exists
+     * in the ProductDatabase
+     */
     @Test
     public void getProductPriceTest_ProductRepositoryReturnsValidPrice() {
         Product product = new Product();
@@ -45,6 +47,11 @@ public class MongoServiceTests {
         Assert.assertEquals(price, actualPrice);
     }
 
+    /**
+     * getProductPrice() should return a randomly generated price if the product
+     * does not already exist in the ProductDatabase and then save the new price
+     * to the ProductDatabase
+     */
     @Test
     public void getProductPriceTest_ProductRepositoryDoesNotContainProduct() {
         Product product = new Product();
@@ -56,5 +63,6 @@ public class MongoServiceTests {
         Price actualPrice = mongoService.getProductPrice(product);
 
         Assert.assertNotNull(actualPrice);
+        Mockito.verify(productRepository).save(Mockito.any());
     }
 }

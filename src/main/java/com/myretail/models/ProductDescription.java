@@ -4,10 +4,6 @@ public class ProductDescription {
 
     private String title;
 
-    public ProductDescription(String title) {
-        this.title = title;
-    }
-
     public String getTitle(){
         return title;
     }

@@ -32,7 +32,6 @@ public class ProductControllerTest {
     @MockBean
     private ProductService productService;
 
-
     @Test
     public void getProductsTest_ProductServiceReturnsValidProduct() throws Exception {
         Product product = new Product();
