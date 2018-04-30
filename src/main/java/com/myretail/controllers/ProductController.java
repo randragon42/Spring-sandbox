@@ -19,7 +19,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/{id}")
-    public Product products(@PathVariable int id){
+    public Product products(@PathVariable String id){
 
         Product product = productService.getProduct(id);
         if(product == null) {

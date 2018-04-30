@@ -2,10 +2,15 @@ package com.myretail.models;
 
 import org.springframework.data.annotation.Id;
 
+import java.math.BigInteger;
+
 public class Product {
 
+//    @Id
+//    private BigInteger MongoId;
+
     @Id
-    public int id;
+    public String id;
 
     private Item item;
     public Price price;

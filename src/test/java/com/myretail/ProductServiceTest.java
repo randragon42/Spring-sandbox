@@ -38,7 +38,7 @@ public class ProductServiceTest {
     @Test
     public void getProductTest_RedSkyServiceAndMongoServiceReturnValidProduct() {
         Product product = new Product();
-        product.id = 42;
+        product.id = "42";
         //product.setItem(new Item(new ProductDescription("Towel")));
         Price price = new Price(42, "USD");
 
@@ -58,9 +58,9 @@ public class ProductServiceTest {
     public void getProductTest_RedSkyServiceReturnsNullProduct() {
         Product product = null;
 
-        Mockito.when(redSkyService.getProduct(Mockito.anyInt())).thenReturn(product);
+        Mockito.when(redSkyService.getProduct(Mockito.anyString())).thenReturn(product);
 
-        Product actualProduct = productService.getProduct(42);
+        Product actualProduct = productService.getProduct("42");
 
         Assert.assertEquals(product, actualProduct);
     }

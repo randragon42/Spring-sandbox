@@ -32,12 +32,12 @@ public class MongoServiceTests {
     @Test
     public void getProductPriceTest_ProductRepositoryReturnsValidPrice() {
         Product product = new Product();
-        product.id = 42;
+        product.id = "42";
 
         Price price = new Price(12.00, "USD");
         Product mongoStoredProduct = new Product();
         mongoStoredProduct.price = price;
-        mongoStoredProduct.id = 42;
+        mongoStoredProduct.id = "42";
         Optional<Product> mongoReturnedProduct = Optional.of(mongoStoredProduct);
 
         Mockito.when(productRepository.findById(product.id)).thenReturn(mongoReturnedProduct);
@@ -55,7 +55,7 @@ public class MongoServiceTests {
     @Test
     public void getProductPriceTest_ProductRepositoryDoesNotContainProduct() {
         Product product = new Product();
-        product.id = 42;
+        product.id = "42";
         Optional<Product> mongoReturnedProduct = Optional.empty();
 
         Mockito.when(productRepository.findById(product.id)).thenReturn(mongoReturnedProduct);

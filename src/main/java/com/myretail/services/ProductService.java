@@ -13,7 +13,7 @@ public class ProductService {
     @Autowired
     private RedSkyService redSkyService;
 
-    public Product getProduct(int id) {
+    public Product getProduct(String id) {
         Product product = redSkyService.getProduct(id);
         if(product == null) {
             return null;

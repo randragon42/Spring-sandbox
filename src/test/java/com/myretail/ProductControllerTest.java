@@ -36,21 +36,21 @@ public class ProductControllerTest {
     public void getProductsTest_ProductServiceReturnsValidProduct() throws Exception {
         Product product = new Product();
         product.price = new Price(42, "USD");
-        product.id = 42;
+        product.id = "42";
 
         Mockito.when(productService.getProduct(product.id)).thenReturn(product);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/products/42");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-        String expected = "{\"id\":42,\"item\":null,\"price\":{\"value\":42,\"currencyCode\":\"USD\"}}";
+        String expected = "{\"id\":\"42\",\"item\":null,\"price\":{\"value\":42,\"currencyCode\":\"USD\"}}";
 
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
     @Test
     public void getProductsTest_ProductServiceReturnsNull() throws Exception {
-        Mockito.when(productService.getProduct(Mockito.anyInt())).thenReturn(null);
+        Mockito.when(productService.getProduct(Mockito.anyString())).thenReturn(null);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/products/42");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();

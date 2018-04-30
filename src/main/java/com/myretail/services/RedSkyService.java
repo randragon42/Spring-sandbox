@@ -29,7 +29,7 @@ public class RedSkyService {
      * @param id the ID of a product to lookup
      * @return A Product if one with id is found, else null
      */
-    public Product getProduct(int id) {
+    public Product getProduct(String id) {
         RestTemplate restTemplate = new RestTemplate();
         String resourceUrl = endpoint + id + excludes;
 

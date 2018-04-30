@@ -35,8 +35,11 @@ public class MongoService {
         return productRepository.save(product);
     }
 
-    private int getRandomPrice() {
-        Random rand = new Random();
-        return rand.nextInt(1000) + 1;
+    /**
+     *
+     * @return a double with 2 digits to emulate an item's price
+     */
+    private double getRandomPrice() {
+        return (int) ((Math.random() * 900) + 100) / 100.0;
     }
 }

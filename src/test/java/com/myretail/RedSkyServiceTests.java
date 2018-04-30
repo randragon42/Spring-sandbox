@@ -21,7 +21,7 @@ public class RedSkyServiceTests {
      */
     @Test
     public void getProduct_RedSkyReturnsValidProduct() {
-        int id = 13860428;
+        String id = "13860428";
 
         Product product = redSkyService.getProduct(id);
 
@@ -34,7 +34,7 @@ public class RedSkyServiceTests {
      */
     @Test
     public void getProduct_RedSkyReturns404() {
-        int id = 15117729;
+        String id = "15117729";
 
         Product product = redSkyService.getProduct(id);
 
