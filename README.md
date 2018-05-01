@@ -1,4 +1,4 @@
-# Spring-sandbox
+# myRetail RESTful service
 
 ## How to Run
 ### Set Up
