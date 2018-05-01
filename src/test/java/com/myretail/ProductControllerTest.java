@@ -39,7 +39,7 @@ public class ProductControllerTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/products/42");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-        String expected = "{\"id\":\"42\",\"item\":null,\"price\":{\"value\":42,\"currencyCode\":\"USD\"}}";
+        String expected = "{\"id\":\"42\",\"item\":null,\"price\":{\"value\":42,\"currency_code\":\"USD\"}}";
 
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }

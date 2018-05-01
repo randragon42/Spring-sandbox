@@ -16,7 +16,7 @@ public class Price {
         return value;
     }
 
-    public String getCurrencyCode() {
+    public String getCurrency_code() {
         return currency_code;
     }
 
